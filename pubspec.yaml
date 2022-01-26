@@ -1,0 +1,41 @@
+name: rae_curvedbottombutton_package
+version: 0.0.1+2
+homepage: http://www.raehealth.com
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.15.1 <3.0.0" #Dart SDK 2021-12-20
+  flutter: ">=2.8.1"
+
+dependencies:
+  cupertino_icons: ^1.0.4
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.0.1
+  flutter_localizations:
+    sdk: flutter
+  flutter_modular: ^4.3.0
+  hive_flutter: ^1.1.0
+  i69n: ^2.1.0
+  rae_localization_package:
+    git:
+      url: https://github.com/RAE-Health/rae_localization_package
+      # url: git@github.com:RAE-Health/rae_localization_package.git
+  rae_asset_package:
+    git:
+      url: https://github.com/RAE-Health/rae_asset_package.git
+      # url: git@github.com:RAE-Health/rae_asset_package.git
+      ref: main
+  extensions_package:
+    git:
+      url: https://github.com/RAE-Health/extensions_package.git
+
+dependency_overrides: null
+  
+dev_dependencies:
+  build_runner:
+  test:
+
+flutter:
+  uses-material-design: true
+  generate: false
