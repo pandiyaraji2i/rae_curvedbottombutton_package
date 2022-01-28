@@ -15,15 +15,21 @@ class CurvedPainter extends CustomPainter {
       ..color = fillColor
       ..style = PaintingStyle.fill;
 
+    double width = size.width;
+    // double leftArcControlPoint = 0.24;
+    // double rightArcControlPoint = 0.76;
+    // double firstBezierHeight = 15.0;
+    // double secondBezierHeight = 47.0;
     Path path = Path();
     path.moveTo(0, 0); // Start
-    path.lineTo(size.width * 0.2, 0);
-    path.quadraticBezierTo(size.width * 0.25, 0, size.width * 0.25, 20);
-    path.quadraticBezierTo(size.width * 0.25, 45, size.width * 0.30, 45);
-    path.quadraticBezierTo(size.width * 0.25, 45, size.width * 0.70, 45);
-    path.quadraticBezierTo(size.width * 0.75, 45, size.width * 0.75, 20);
-    path.quadraticBezierTo(size.width * 0.75, 0, size.width * 0.80, 0);
+    path.lineTo(width * 0.2 ,0);
+    path.quadraticBezierTo(width * 0.24, 0, width * 0.24, 15);
+    path.quadraticBezierTo(width * 0.24, 47, width * 0.35, 47);
+    path.quadraticBezierTo(width * 0.30, 47, width * 0.65, 47);
+    path.quadraticBezierTo(width * 0.76, 47, width * 0.76, 15);
+    path.quadraticBezierTo(width * 0.76, 0, width * 0.80, 0);
     path.lineTo(size.width * 1, 0);
+
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
     path.lineTo(0, 20);
