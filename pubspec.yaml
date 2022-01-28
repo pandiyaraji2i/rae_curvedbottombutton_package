@@ -1,5 +1,5 @@
 name: rae_curvedbottombutton_package
-version: 0.0.1+2
+version: 0.0.1+3
 homepage: http://www.raehealth.com
 publish_to: 'none'
 
@@ -17,6 +17,7 @@ dependencies:
   flutter_modular: ^4.3.0
   hive_flutter: ^1.1.0
   i69n: ^2.1.0
+  auto_size_text: ^3.0.0
   rae_localization_package:
     git:
       url: https://github.com/RAE-Health/rae_localization_package
