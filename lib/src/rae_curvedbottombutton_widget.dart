@@ -7,7 +7,6 @@ import 'package:rae_curvedbottombutton_package/rae_curvedbottombutton_package.da
 import './widgets/center_icon_button_widget.dart';
 import './widgets/icon_button_widget.dart';
 import './widgets/curved_painter.dart';
-import 'package:rae_localization_package/rae_localization_package.dart';
 // import 'package:rae_asset_package/rae_asset_package.dart';
 import 'package:theme_management/theme_management.dart';
 
@@ -16,52 +15,67 @@ import 'package:theme_management/theme_management.dart';
 // const _bottomBgButtonColorsUnselected =
 //     ThemeColors(dark: Colors.grey, light: Colors.grey);
 const _bottomContainerHeight = 90.0;
-const _bgColorForBottomBar =
-    ThemeColors(dark: Colors.white, light: Colors.white);
-const _bgColorForBottomBarIcon =
-    ThemeColors(dark: Colors.orange, light: Colors.green);
-const _shadowColorBottonBar =
-    ThemeColors(dark: Colors.white, light: Colors.black);
-const _textColorForCenterWidget =
-    ThemeColors(dark: Colors.white, light: Colors.black);
+
 enum RAECurvedButtonSelected {
-  chat,
-  inbox,
-  iamexperienced,
+  leftButton,
+  rightButton,
+  centerButton,
 }
 
 class RAECurvedBottomButton extends StatelessWidget {
   final Widget leftButton;
+  final String leftButtonTitle;
   final Widget rightButton;
-  final Widget centerButton;
+  final String rightButtonTitle;
+  final String centerButtonTitle;
+  final ThemeColors? bgColorForBottomBar;
+  final ThemeColors? bgColorForBottomBarIcon;
+  final ThemeColors? shadowColorBottomBar;
+  final ThemeColors? textColorForCenterWidget;
+
   RAECurvedButtonSelected? initialItem;
 
   RAECurvedBottomButton({
     Key? key,
     required this.leftButton,
+    required this.leftButtonTitle,
     required this.rightButton,
-    required this.centerButton,
+    required this.rightButtonTitle,
+    required this.centerButtonTitle,
     this.initialItem,
-  }) : super(key: key);
+    ThemeColors? bgColorForBottomBar,
+    ThemeColors? bgColorForBottomBarIcon,
+    ThemeColors? shadowColorBottomBar,
+    ThemeColors? textColorForCenterWidget,
+  })  : bgColorForBottomBar = bgColorForBottomBar ??
+            ThemeColors(dark: Colors.white, light: Colors.white),
+        bgColorForBottomBarIcon = bgColorForBottomBarIcon ??
+            ThemeColors(dark: Colors.orange, light: Colors.green),
+        shadowColorBottomBar = shadowColorBottomBar ??
+            ThemeColors(dark: Colors.white, light: Colors.black),
+        textColorForCenterWidget = textColorForCenterWidget ??
+            ThemeColors(dark: Colors.white, light: Colors.black),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final cubit = Modular.get<RAECurvedButtonCubit>();
-    final textStyle = TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w600,
-        color: _textColorForCenterWidget.of(context));
     return BlocBuilder<RAECurvedButtonCubit, RAECurvedButtonState>(
       bloc: cubit,
       builder: (_, state) {
         if (state is RAECurvedButtonInitial) {
-          cubit.onButtonTapped(RAECurvedButtonSelected.chat);
+          cubit.onButtonTapped(RAECurvedButtonSelected.leftButton);
         } else if (state is RAECurvedButtonTapped) {
-          if (state.selectedButton == RAECurvedButtonSelected.chat) {
-            initialItem = RAECurvedButtonSelected.chat;
-          } else if (state.selectedButton == RAECurvedButtonSelected.chat) {
-            initialItem = RAECurvedButtonSelected.inbox;
+          if (state.selectedButton == RAECurvedButtonSelected.leftButton) {
+            initialItem = RAECurvedButtonSelected.leftButton;
+          } else if (state.selectedButton ==
+              RAECurvedButtonSelected.rightButton) {
+            initialItem = RAECurvedButtonSelected.rightButton;
+          }
+          else if (state.selectedButton ==
+              RAECurvedButtonSelected.centerButton) {
+            initialItem = RAECurvedButtonSelected.centerButton;
           }
         }
         return Container(
@@ -79,8 +93,8 @@ class RAECurvedBottomButton extends StatelessWidget {
                       CustomPaint(
                         size: Size(size.width, _bottomContainerHeight),
                         painter: CurvedPainter(
-                            fillColor: _bgColorForBottomBar.of(context),
-                            shadowColor: _shadowColorBottonBar.of(context)),
+                            fillColor: bgColorForBottomBar!.of(context),
+                            shadowColor: shadowColorBottomBar!.of(context)),
                       ),
                       Center(
                           heightFactor: 0.3,
@@ -88,11 +102,10 @@ class RAECurvedBottomButton extends StatelessWidget {
                               widthFactor: 0.45,
                               heightFactor: 0.6,
                               child: CenterIconWidget(
-                                buttonTitle:
-                                    RAELocalization.iamexperiencing.text,
+                                buttonTitle: centerButtonTitle,
                                 onPressed: () {
                                   cubit.onButtonTapped(
-                                      RAECurvedButtonSelected.iamexperienced);
+                                      RAECurvedButtonSelected.centerButton);
                                 },
                               ))),
                       Container(
@@ -104,14 +117,14 @@ class RAECurvedBottomButton extends StatelessWidget {
                             Container(
                               width: size.width * 0.25,
                               child: CustomIconButton(
-                                  icon: Icon(Icons
-                                      .chat_bubble_outline), //Widget we can change image also
-                                  buttonTitle: RAELocalization.chat.text,
+                                  icon:
+                                      leftButton, //Widget we can change image also
+                                  buttonTitle: leftButtonTitle,
                                   onPressed: () {
                                     cubit.onButtonTapped(
-                                        RAECurvedButtonSelected.chat);
+                                        RAECurvedButtonSelected.leftButton);
                                   },
-                                  bgColor: _bgColorForBottomBarIcon),
+                                  bgColor: bgColorForBottomBarIcon!),
                             ),
                             Container(
                               width: size.width * 0.45,
@@ -119,13 +132,13 @@ class RAECurvedBottomButton extends StatelessWidget {
                             Container(
                               width: size.width * 0.25,
                               child: CustomIconButton(
-                                  icon: Icon(Icons.inbox_outlined),
-                                  buttonTitle: RAELocalization.inbox.text,
+                                  icon: rightButton,
+                                  buttonTitle: rightButtonTitle,
                                   onPressed: () {
                                     cubit.onButtonTapped(
-                                        RAECurvedButtonSelected.inbox);
+                                        RAECurvedButtonSelected.rightButton);
                                   },
-                                  bgColor: _bgColorForBottomBarIcon),
+                                  bgColor: bgColorForBottomBarIcon!),
                             ),
                           ],
                         ),

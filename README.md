@@ -1,6 +1,6 @@
 # rae_curvedbottombutton_package
 
-This is a template for the README.md. Replace the *README.md* with this, and fill in empty/missing details.
+Package to create a curved bottom view with Three button(2 edge buttons and 1 center button)
 
 ## Install
 
@@ -26,7 +26,17 @@ If errors like ```Traget URI doesn't...``` or ```Undefined name 'AppLocalization
 
 ## Usage
 
-TODO: Provide details/examples on usage.
+To use the package, add below code in your main.dart or wherever you need bottom bar. You can pass background and bar button colors (Optional params) based on your theme preference
+
+```dart
+RAECurvedBottomButton(
+              leftButton: Icon(Icons.chat_bubble_outline), //Left button icon or image
+              leftButtonTitle: RAELocalization.chat.text,  //Left button title
+              rightButton: Icon(Icons.inbox_outlined), //Right button icon or image
+              rightButtonTitle: RAELocalization.inbox.text, //Right button title
+              centerButtonTitle: RAELocalization.iamexperiencing.text, //Center button 
+              )
+```
 
 ## Final Note
 

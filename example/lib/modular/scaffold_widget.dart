@@ -115,10 +115,10 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> {
              Expanded(
           child: RAECurvedBottomButton(
               leftButton: Icon(Icons.chat_bubble_outline),
+              leftButtonTitle: RAELocalization.chat.text,
               rightButton: Icon(Icons.inbox_outlined),
-              centerButton: ElevatedButton(
-                  onPressed: null,
-                  child: Text(RAELocalization.iamexperiencing.text))),
+              rightButtonTitle: RAELocalization.inbox.text,
+              centerButtonTitle: RAELocalization.iamexperiencing.text,),
         ),
       ],
     );
