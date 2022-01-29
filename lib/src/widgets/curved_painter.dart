@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 
 class CurvedPainter extends CustomPainter {
   final Color fillColor;
-  final Color strokeColor;
   final Color shadowColor;
   CurvedPainter(
       {this.fillColor = Colors.white,
-      this.strokeColor = Colors.white,
       this.shadowColor = Colors.black});
 
   @override

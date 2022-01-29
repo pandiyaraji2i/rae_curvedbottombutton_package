@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:theme_management/theme_management.dart';
+import 'package:rae_asset_package/rae_asset_package.dart';
 
 const _borderRadius = 25.0;
 const _borderWidth = 2.0;
@@ -22,11 +23,11 @@ class CenterIconWidget extends StatelessWidget {
     ThemeColors? borderColors,
     ThemeColors? textColors,
   })  : bgColors =
-            bgColors ?? ThemeColors(dark: Colors.orange, light: Colors.green),
+            bgColors ?? RAEAsset.colorsCurvedBottomBarIconBackground,
         borderColors = borderColors ??
-            ThemeColors(dark: Colors.white, light: Colors.white),
+            RAEAsset.colorsCurvedBottomBarCenterWidgetBorder,
         textColors =
-            textColors ?? ThemeColors(dark: Colors.white, light: Colors.black),
+            textColors ?? RAEAsset.colorsCurvedBottomBarCenterWidget,
         super(key: key);
 
   @override

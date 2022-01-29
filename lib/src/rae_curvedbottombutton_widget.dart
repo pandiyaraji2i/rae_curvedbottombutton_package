@@ -7,13 +7,9 @@ import 'package:rae_curvedbottombutton_package/rae_curvedbottombutton_package.da
 import './widgets/center_icon_button_widget.dart';
 import './widgets/icon_button_widget.dart';
 import './widgets/curved_painter.dart';
-// import 'package:rae_asset_package/rae_asset_package.dart';
+import 'package:rae_asset_package/rae_asset_package.dart';
 import 'package:theme_management/theme_management.dart';
 
-// const _bottomBgButtonColorSelected =
-//     ThemeColors(dark: Colors.deepOrange, light: Colors.orange);
-// const _bottomBgButtonColorsUnselected =
-//     ThemeColors(dark: Colors.grey, light: Colors.grey);
 const _bottomContainerHeight = 90.0;
 
 enum RAECurvedButtonSelected {
@@ -48,13 +44,13 @@ class RAECurvedBottomButton extends StatelessWidget {
     ThemeColors? shadowColorBottomBar,
     ThemeColors? textColorForCenterWidget,
   })  : bgColorForBottomBar = bgColorForBottomBar ??
-            ThemeColors(dark: Colors.white, light: Colors.white),
+            RAEAsset.colorsCurvedBottomBarBackground,
         bgColorForBottomBarIcon = bgColorForBottomBarIcon ??
-            ThemeColors(dark: Colors.orange, light: Colors.green),
+            RAEAsset.colorsCurvedBottomBarIconBackground,
         shadowColorBottomBar = shadowColorBottomBar ??
-            ThemeColors(dark: Colors.white, light: Colors.black),
+            RAEAsset.colorsCurvedBottomBarShadow,
         textColorForCenterWidget = textColorForCenterWidget ??
-            ThemeColors(dark: Colors.white, light: Colors.black),
+            RAEAsset.colorsCurvedBottomBarCenterWidget,
         super(key: key);
 
   @override

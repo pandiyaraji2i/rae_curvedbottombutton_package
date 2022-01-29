@@ -22,7 +22,7 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> {
           title: Text(widget.title),
           actions: [],
         ),
-        backgroundColor:  (ThemeManagement.themeMode == ThemeMode.dark ) ? Colors.orange.shade100 : Colors.blue.shade100,
+        backgroundColor: Colors.blue.shade100,
         body: _themeAndLocale(),
         
       );
