@@ -14,20 +14,26 @@ class CurvedPainter extends CustomPainter {
     Paint paint = new Paint()
       ..color = fillColor
       ..style = PaintingStyle.fill;
-
+        
     double width = size.width;
-    // double leftArcControlPoint = 0.24;
-    // double rightArcControlPoint = 0.76;
-    // double firstBezierHeight = 15.0;
-    // double secondBezierHeight = 47.0;
+    double pathStartPoint = 0.20;
+    double leftArcControlPoint = 0.24;
+    double rightArcControlPoint = 0.76;
+    double firstBezierHeight = 15.0;
+    double secondBezierHeight = 47.0;
+    double straightLineStartPoint = 0.30;
+    double firstBezierCurvePoint = 0.35;
+    double straightLineEndPath = 0.65;
+    double pathEndPoint = 0.80;
+    
     Path path = Path();
     path.moveTo(0, 0); // Start
-    path.lineTo(width * 0.2 ,0);
-    path.quadraticBezierTo(width * 0.24, 0, width * 0.24, 15);
-    path.quadraticBezierTo(width * 0.24, 47, width * 0.35, 47);
-    path.quadraticBezierTo(width * 0.30, 47, width * 0.65, 47);
-    path.quadraticBezierTo(width * 0.76, 47, width * 0.76, 15);
-    path.quadraticBezierTo(width * 0.76, 0, width * 0.80, 0);
+    path.lineTo(width * pathStartPoint ,0);
+    path.quadraticBezierTo(width * leftArcControlPoint, 0, width * leftArcControlPoint, firstBezierHeight);
+    path.quadraticBezierTo(width * leftArcControlPoint, secondBezierHeight, width * firstBezierCurvePoint, secondBezierHeight);
+    path.quadraticBezierTo(width * straightLineStartPoint, secondBezierHeight, width * straightLineEndPath, secondBezierHeight);
+    path.quadraticBezierTo(width * rightArcControlPoint, secondBezierHeight, width * rightArcControlPoint, firstBezierHeight);
+    path.quadraticBezierTo(width * rightArcControlPoint, 0, width * pathEndPoint, 0);
     path.lineTo(size.width * 1, 0);
 
     path.lineTo(size.width, size.height);
